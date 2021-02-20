@@ -1,5 +1,8 @@
 .main {
   padding: 10px;
   display: flex;
+  margin: 10px auto;
+  width: fit-content;
   height: 600px;
+  box-shadow: 2px 3px 19px var(--primary-color);
 }

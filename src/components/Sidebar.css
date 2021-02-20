@@ -1,5 +1,47 @@
 .sidebar {
   width: 300px;
   height: 100%;
-  border: 1px solid var(--primary-color);
+}
+.sidebar hr {
+  border: none;
+  border-top: 1px solid #ced0d4;
+  margin: 2px 15px;
+}
+.sidebar_header {
+  display: flex;
+  padding: 5px 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar_header .MuiAvatar-root {
+  height: 33px;
+  width: 33px;
+  border: 2px solid var(--primary-color);
+}
+
+.sidebar_header h4 {
+  margin: 0 5px;
+  cursor: default;
+}
+.sidebar_header p {
+  padding: 3px;
+  cursor: pointer;
+}
+
+.sidebar_row {
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 3px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.sidebar_row:hover {
+  background-color: rgba(197, 87, 53, 0.4);
+}
+.sidebar_row .MuiAvatar-root {
+  height: 22px;
+  width: 22px;
+  margin: 0 5px;
 }
