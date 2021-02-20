@@ -1,7 +1,24 @@
 import "./App.css";
+import Signin from "./components/Signin";
+import { connect } from "react-redux";
+import { Component } from "react";
 
-function App() {
-  return <div className="App"></div>;
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Hii {this.props.user} </h1>
+        <Signin />
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    userPhoto: state.userPhoto,
+  };
+};
+
+export default connect(mapStateToProps)(App);
