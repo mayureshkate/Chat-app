@@ -1,0 +1,40 @@
+.signin {
+  width: 600px;
+  min-height: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.signin_header {
+  display: flex;
+  justify-content: center;
+}
+.signin_header img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+.signin_header h1 {
+  color: #c55735;
+  font-weight: bolder;
+}
+.signin button {
+  width: 200px;
+  padding: 10px;
+  background-color: #c55735;
+  outline: none;
+  margin: 0 auto;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid #c55735;
+  font-size: 1.2rem;
+  transition: 150ms;
+  box-shadow: 4px 3px 18px 0px #c55735;
+}
+.signin button:hover {
+  color: #c55735;
+  background-color: #fff;
+  box-shadow: none;
+}

@@ -1,15 +1,28 @@
 import "./App.css";
 import Signin from "./components/Signin";
+import Main from "./components/Main";
 import { connect } from "react-redux";
 import { Component } from "react";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>Hii {this.props.user} </h1>
-        <Signin />
-      </div>
+      <Router>
+        <div className="App">
+          {/* {!this.props.user ? <Redirect to="/signin" /> : <Redirect to="/" />} */}
+          <Switch>
+            <Route path="/signin" component={Signin} />
+            <Route path="/" component={Main} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
