@@ -9,7 +9,6 @@ import addFriend from "../addFriend";
 
 function Signin(props) {
   let searchId = props.location.search.slice(1);
-  console.log(searchId);
   let myButton;
 
   const addToDB = (name, photo, uid) => {

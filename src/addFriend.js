@@ -1,6 +1,7 @@
 import { db } from "./firebase";
 import firebase from "firebase";
 const makeThemFriends = (friend, friendPhoto, fid, user, userPhoto, uid) => {
+  if (uid == fid) return;
   let myInfo = {
     user: user,
     userPhoto: userPhoto,
@@ -20,7 +21,6 @@ const makeThemFriends = (friend, friendPhoto, fid, user, userPhoto, uid) => {
       res.data().friends.map((item) => {
         if (item.uid == fid) alreadyFriends = true;
       });
-      console.log("alreadyFriends: ", alreadyFriends);
       if (!alreadyFriends) {
         db.collection("chatRooms")
           .orderBy("index", "desc")
@@ -54,7 +54,6 @@ const makeThemFriends = (friend, friendPhoto, fid, user, userPhoto, uid) => {
 };
 
 const addFriend = (fid, user, userPhoto, uid) => {
-  console.log("addFriend is called");
   db.collection("friends")
     .doc(fid)
     .get()
@@ -65,7 +64,7 @@ const addFriend = (fid, user, userPhoto, uid) => {
 
         makeThemFriends(friend, friendPhoto, fid, user, userPhoto, uid);
       } else {
-        alert(`friend id : ${fid} is invalid :(`);
+        alert(`Invalid Friend id : [${fid}]`);
       }
     })
     .catch((err) => {

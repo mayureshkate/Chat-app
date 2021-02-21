@@ -42,7 +42,7 @@ class Sidebar extends Component {
             <h4>Hi {this.props.user}</h4>
           </div>
           <div>
-            <p>Add Friend?</p>
+            <p onClick={this.props.openFriend}>Add Friend?</p>
           </div>
         </div>
         <hr />

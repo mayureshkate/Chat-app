@@ -5,14 +5,31 @@ import { Avatar } from "@material-ui/core";
 import { Component } from "react";
 
 import { db } from "../firebase";
+import firebase from "firebase";
 
 class ChatBox extends Component {
   state = {
     bodyMessages: [],
   };
+  chatBody;
+  inputField;
+  componentDidMount() {
+    if (this.chatBody) this.chatBody.scroll = (0, this.chatBody.scrollHeight);
+  }
   render() {
     const sendText = (e) => {
       e.preventDefault();
+      let message = this.inputField.value;
+      if (message == "") return;
+      this.inputField.value = "";
+      db.collection("chatRooms")
+        .doc(this.props.chatRoom)
+        .update({
+          messages: firebase.firestore.FieldValue.arrayUnion({
+            message: message,
+            uid: this.props.uid,
+          }),
+        });
     };
 
     db.collection("chatRooms")
@@ -35,8 +52,8 @@ class ChatBox extends Component {
             );
         });
         if (
-          bodyMessages.length !== this.state.bodyMessages.length ||
-          bodyMessages[0] !== this.state.bodyMessages[0]
+          bodyMessages.length !== this.state.bodyMessages.length &&
+          bodyMessages.length !== 0
         )
           this.setState({ bodyMessages: bodyMessages });
       });
@@ -53,14 +70,24 @@ class ChatBox extends Component {
             <p>{this.props.user}</p>
           </section>
         </div>
-        <div className="chat-box_body">{this.state.bodyMessages}</div>
+        <div ref={(el) => (this.chatBody = el)} className="chat-box_body">
+          {this.state.bodyMessages}
+        </div>
         <div className="chat-box_footer">
-          <form>
-            <input type="text" placeholder="Type a message" />
-            <button onClick={sendText} type="submit">
-              ᗒ
-            </button>
-          </form>
+          {this.props.chatRoom !== "" ? (
+            <form>
+              <input
+                ref={(el) => (this.inputField = el)}
+                type="text"
+                placeholder="Type a message"
+              />
+              <button onClick={sendText} type="submit">
+                ᗒ
+              </button>
+            </form>
+          ) : (
+            " "
+          )}
         </div>
       </div>
     );

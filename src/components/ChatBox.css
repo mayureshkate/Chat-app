@@ -22,6 +22,7 @@
   margin: 0 4px;
 }
 .chat-box_body {
+  overflow-y: scroll;
   flex: 1;
   padding: 10px;
 }

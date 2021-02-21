@@ -5,4 +5,44 @@
   width: fit-content;
   height: 600px;
   box-shadow: 2px 3px 19px var(--primary-color);
+  position: relative;
+}
+
+.main_add-friend {
+  position: absolute;
+  max-width: 600px;
+  padding: 20px;
+  top: 20%;
+  left: 15%;
+  background-color: #fff;
+  transition: 350ms;
+  box-shadow: 1px 1px 10px var(--primary-color);
+}
+.main_add-friend-close {
+  top: -100% !important;
+}
+.main_add-friend label {
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+.main_add-friend input {
+  width: 100%;
+  padding: 5px;
+  font-size: 1rem;
+  outline: none;
+}
+.main_add-friend button {
+  margin: 10px 0;
+  outline: none;
+  padding: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.main_add-friend .main_close {
+  margin-right: 20px;
+}
+.main_add-friend .main_add {
+  margin-left: 20px;
+  color: var(--primary-color);
 }
