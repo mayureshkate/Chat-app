@@ -4,21 +4,62 @@ import "./Signin.css";
 
 import * as actionTypes from "../store/action";
 import { connect } from "react-redux";
-import { auth, authProvider } from "../firebase";
+import { auth, authProvider, db } from "../firebase";
+import addFriend from "../addFriend";
 
 function Signin(props) {
+  let searchId = props.location.search.slice(1);
+  console.log(searchId);
+  let myButton;
+
+  const addToDB = (name, photo, uid) => {
+    const docRef = db.collection("friends").doc(uid);
+    docRef
+      .get()
+      .then((doc) => {
+        if (!doc.exists) {
+          docRef
+            .set({
+              chatRooms: [],
+              friends: [],
+              info: {
+                user: name,
+                userPhoto: photo,
+              },
+            })
+            .then(() => {
+              if (searchId) addFriend(searchId, name, photo, uid);
+            })
+            .catch((error) => {
+              alert("Error: ", error);
+            });
+        } else {
+          if (searchId) addFriend(searchId, name, photo, uid);
+        }
+        props.login(name, photo, uid);
+        props.history.push("/");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
+
   const singIn = () => {
+    myButton.innerText = "Loading ...";
+    myButton.disabled = true;
     auth
       .signInWithPopup(authProvider)
       .then((result) => {
         let name = result.user.displayName;
         let photo = result.user.photoURL;
         let id = result.user.uid;
-        props.login(name, photo, id);
-        props.history.push("/");
+        addToDB(name, photo, id);
+        myButton.innerText = "Redirecting ...";
       })
       .catch((error) => {
         alert(error.message);
+        myButton.innerText = "Signin";
+        myButton.disabled = false;
       });
   };
 
@@ -29,7 +70,7 @@ function Signin(props) {
         <h1>Chat App</h1>
       </div>
 
-      <button type="submit" onClick={singIn}>
+      <button ref={(el) => (myButton = el)} type="submit" onClick={singIn}>
         Sign in
       </button>
     </div>

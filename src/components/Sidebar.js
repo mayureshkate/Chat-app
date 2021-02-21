@@ -46,17 +46,7 @@ class Sidebar extends Component {
           </div>
         </div>
         <hr />
-        <div className="sidebar_body">
-          {this.state.sidebarRows}
-          <div className="sidebar_row">
-            <Avatar src="https://cdn.pixabay.com/photo/2016/10/25/18/27/unknown-1769656__340.png" />
-            <p>Some name</p>
-          </div>
-          <div className="sidebar_row">
-            <Avatar src="https://cdn.pixabay.com/photo/2018/04/11/11/54/small-poly-3310319__340.jpg" />{" "}
-            <p>another name</p>
-          </div>
-        </div>
+        <div className="sidebar_body">{this.state.sidebarRows}</div>
       </div>
     );
   }

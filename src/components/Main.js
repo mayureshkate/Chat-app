@@ -27,17 +27,21 @@ class Main extends Component {
           });
         });
     };
-    return (
+    return this.props.user ? (
       <div className="main">
         <Sidebar openChat={openChat} />
         <ChatBox />
       </div>
+    ) : (
+      <h1>Please signin first.</h1>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    user: state.user,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

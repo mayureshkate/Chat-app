@@ -1,9 +1,8 @@
 import * as actionTypes from "./action";
 const initialState = {
-  user: "Aashu",
-  userPhoto:
-    "https://cdn.pixabay.com/photo/2015/09/18/00/24/robin-944887__340.jpg",
-  uid: "3vqlti21UNYyDozEAnre",
+  user: null,
+  userPhoto: "",
+  uid: "",
   friend: "",
   friendPhoto: "",
   fid: "",

@@ -16,7 +16,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          {/* {!this.props.user ? <Redirect to="/signin" /> : <Redirect to="/" />} */}
+          {this.props.user || window.location.pathname.includes("signin") ? (
+            ""
+          ) : (
+            <Redirect to="/signin" />
+          )}
           <Switch>
             <Route path="/signin" component={Signin} />
             <Route path="/" component={Main} />
