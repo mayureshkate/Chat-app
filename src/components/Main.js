@@ -68,7 +68,7 @@ class Main extends Component {
             Ask your friend to visit this link :{" "}
             <a
               target="_blank"
-              href={`${window.location.origin}/signin/${this.props.uid}`}
+              href={`${window.location.origin}/signin?${this.props.uid}`}
             >
               {window.location.origin}/signin/{this.props.uid}
             </a>

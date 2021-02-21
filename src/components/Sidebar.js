@@ -47,6 +47,12 @@ class Sidebar extends Component {
         </div>
         <hr />
         <div className="sidebar_body">{this.state.sidebarRows}</div>
+        <hr />
+        <div className="sidebar_footer">
+          <p>
+            Your id is: <span>{this.props.uid}</span>
+          </p>
+        </div>
       </div>
     );
   }
