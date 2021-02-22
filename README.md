@@ -13,4 +13,4 @@ step-4: run "npm install" command to download all the modules and dependencies.
 step-5: run "npm start" to run it in your computer.
 
 
-![Chat Application](Chat-app-1.gif)
+![Chat Application](chat-app-1.gif)
