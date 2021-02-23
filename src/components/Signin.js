@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/Saly-12.svg";
+import logo from "../assets/Saly-12.png";
 import "./Signin.css";
 
 import * as actionTypes from "../store/action";

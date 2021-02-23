@@ -65,12 +65,12 @@ class Main extends Component {
           </button>
           <h1>OR</h1>
           <p>
-            Ask your friend to visit this link :{" "}
+            Ask your friend to visit this link :
             <a
               target="_blank"
               href={`${window.location.origin}/signin?${this.props.uid}`}
             >
-              {window.location.origin}/signin/{this.props.uid}
+              {window.location.origin}/signin?{this.props.uid}
             </a>
           </p>
         </div>
