@@ -9,16 +9,19 @@
 .signin_header {
   display: flex;
   justify-content: center;
+  align-items: center;
+  border-bottom: 4px solid var(--primary-color);
 }
 .signin_header img {
-  height: 80px;
-  width: 80px;
+  height: 140px;
+  width: 140px;
   border-radius: 50%;
 }
 .signin_header h1 {
   color: #c55735;
   font-weight: bolder;
   margin: auto 0;
+  font-size: 4rem;
 }
 .signin button {
   width: 200px;

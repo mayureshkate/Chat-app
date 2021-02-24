@@ -16,7 +16,9 @@ function Signin(props) {
     docRef
       .get()
       .then((doc) => {
+        // checking if user already exist on the server
         if (!doc.exists) {
+          // if not then setting the user into the database
           docRef
             .set({
               chatRooms: [],

@@ -14,6 +14,7 @@ const makeThemFriends = (friend, friendPhoto, fid, user, userPhoto, uid) => {
   };
   let chatRoom = "";
   let alreadyFriends = false;
+  // making reques to get the data of friend
   db.collection("friends")
     .doc(uid)
     .get()
@@ -21,6 +22,9 @@ const makeThemFriends = (friend, friendPhoto, fid, user, userPhoto, uid) => {
       res.data().friends.map((item) => {
         if (item.uid == fid) alreadyFriends = true;
       });
+
+      // if they are not already friends (user and his friend)
+
       if (!alreadyFriends) {
         db.collection("chatRooms")
           .orderBy("index", "desc")
@@ -29,10 +33,12 @@ const makeThemFriends = (friend, friendPhoto, fid, user, userPhoto, uid) => {
           .then((res) => {
             let chIndex = res.docs[0].data().index + 1;
             chatRoom = `ch${chIndex}`;
+            // setting chat-room for them
             db.collection("chatRooms").doc(chatRoom).set({
               index: chIndex,
               messages: [],
             });
+            // making them friends
             db.collection("friends")
               .doc(fid)
               .update({
@@ -54,6 +60,8 @@ const makeThemFriends = (friend, friendPhoto, fid, user, userPhoto, uid) => {
 };
 
 const addFriend = (fid, user, userPhoto, uid) => {
+  // making request to check if the friend even exist on the database or not
+
   db.collection("friends")
     .doc(fid)
     .get()

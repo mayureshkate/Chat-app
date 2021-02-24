@@ -13,14 +13,12 @@ class ChatBox extends Component {
   };
   chatBody;
   inputField;
-  componentDidMount() {
-    if (this.chatBody) this.chatBody.scroll = (0, this.chatBody.scrollHeight);
-  }
+
   render() {
     const sendText = (e) => {
       e.preventDefault();
       let message = this.inputField.value;
-      if (message == "") return;
+      if (message == "" || message.trim() == "") return;
       this.inputField.value = "";
       db.collection("chatRooms")
         .doc(this.props.chatRoom)

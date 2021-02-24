@@ -14,6 +14,7 @@ class Main extends Component {
   inputFid;
   render() {
     const openChat = (myRooms, friendId) => {
+      // getting common chat room between them
       let friendRooms;
       db.collection("friends")
         .doc(friendId)
@@ -30,6 +31,7 @@ class Main extends Component {
           });
         });
     };
+    // on click of Add button - adding them friends and closing the box
     const addFriend = () => {
       let searchId = this.inputFid.value;
       addFriendToDB(
